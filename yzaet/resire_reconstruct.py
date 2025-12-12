@@ -249,9 +249,9 @@ def resire_reconstruct(projections, matrix, dimz, iterations=100, step_size=1.0,
     recPoints = dimx * dimy * dimz
     
     # 计算中心点 - 与原始代码保持一致
-    ncx = int(np.floor(dimx/2.0) + 1)
-    ncy = int(np.floor(dimy/2.0) + 1)
-    ncz = int(np.floor(dimz/2.0) + 1)
+    ncx = (dimx + 1.0) / 2.0
+    ncy = (dimy + 1.0) / 2.0
+    ncz = (dimz + 1.0) / 2.0
     d_nc = cp.array([float(ncx), float(ncy), float(ncz)], dtype=cp.float32)
     
     # 修改: 注意原始CUDA代码中，投影数据的内存布局
